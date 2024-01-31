@@ -1,0 +1,21 @@
+# 忽略CLion生成的配置和项目文件
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+
+# 忽略编译生成的文件
+out/
+cmake-build-debug/
+cmake-build-release/
+
+# 忽略Makefile生成的文件
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+CMakeScripts/
+
+# 忽略自动生成的文件
+compile_commands.json
