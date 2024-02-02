@@ -126,6 +126,28 @@ void createListByInsertTail(LinkList &list) {
     }
 }
 
+void createListByInsertTailWithoutDummyHead(LinkList &list) {
+    int inputVal = 0;
+    LNode *tailPtr = NULL;
+    printf("Please input the node val. If you input 111111, the process will be ended.\n");
+    scanf("%d", &inputVal);
+    if(inputVal != 111111) {
+        LNode *newNodePtr = (LNode *)malloc(sizeof(LNode));
+        newNodePtr->val = inputVal;
+        newNodePtr->next = NULL;
+        list = newNodePtr;
+        tailPtr = list;
+    } else {
+        return;
+    }
+    scanf("%d", &inputVal);
+    while(inputVal != 111111) {
+        insertAfterNode(tailPtr, inputVal);
+        tailPtr = tailPtr->next;
+        scanf("%d", &inputVal);
+    }
+}
+
 void traverseList(LinkList list) {
     LNode *p = list->next;
     printf("Traverse list result: ");

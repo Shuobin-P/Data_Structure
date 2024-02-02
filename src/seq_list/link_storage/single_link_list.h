@@ -94,8 +94,14 @@ void createListByInsertHead(LinkList &list);
  * @param list
  */
 void createListByInsertTail(LinkList &list);
+
 /**
- * 遍历输出单链表
+ * 通过尾插法创建不带dummy头节点的单链表，把用户输入的值作为新节点的值插入到单链表
+ * @param list
+ */
+void createListByInsertTailWithoutDummyHead(LinkList &list);
+/**
+ * 遍历输出含dummy头节点的单链表
  * @param list
  */
 void traverseList(LinkList list);

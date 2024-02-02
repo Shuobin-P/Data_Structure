@@ -3,7 +3,7 @@
 
 int main() {
     LinkList list;
-    createListByInsertTail(list);
+    createListByInsertTailWithoutDummyHead(list);
     traverseList(list);
     return 0;
 }
