@@ -10,7 +10,13 @@ int main() {
     if(insertAtIndex(list, 2, -2)) {
         printf("Insert successfully\n");
     }
-
+    traverseList(list);
+    LNode *p = getNodeByVal(list, -3);
+    if(p != NULL) {
+        printf("The search result is %d\n", p->val);
+    } else {
+        printf("No results\n");
+    }
     return 0;
 }
 

@@ -68,7 +68,7 @@ bool deleteNode(LNode *p) {
     //说明p是尾节点
     if(p == NULL) return false;
     if(p->next == NULL) {
-        free(p); //FIXME：单链表的尾节点->next这块空间里面的数据不是单链表的数据了。
+        free(p); //FIXME 遍历单链表的时候会出现遍历不完的情况。原因：单链表的尾节点->next这块空间里面的数据不是单链表的数据，因此出现野指针。
     } else {
         //说明p不是尾节点
         //把P后面的数据赋值给前面的元素，然后删除尾节点。问题：我的实现方式比王道的实现时间复杂度更高
@@ -78,6 +78,26 @@ bool deleteNode(LNode *p) {
         free(tmp);
     }
     return true;
+}
+
+LNode *getNodeByIndex(LinkList list, int index) {
+    int cnt = 0;
+    LNode *p = list;
+    if(index <= 0) return NULL;
+    while(p!= NULL && cnt < index) {
+        p = p->next;
+        cnt++;
+    }
+    return p;
+}
+
+LNode *getNodeByVal(LinkList list, int targetVal) {
+    LNode *p = list;
+    while(p!= NULL) {
+        if(p->val == targetVal) return p;
+        else p = p->next;
+    }
+    return NULL;
 }
 
 void traverseList(LinkList list) {

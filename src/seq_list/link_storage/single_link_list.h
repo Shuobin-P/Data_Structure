@@ -61,11 +61,27 @@ bool insertAtIndex(LinkList &list, int index, int val);
 bool deleteAtIndex(LinkList &list, int index, int &deletedEleValHolder);
 
 /**
- * 删除指定节点
+ * 删除给定地址的节点
  * @param p
  * @return
  */
 bool deleteNode(LNode *p);
+
+/**
+ * 获得指定位置的节点
+ * @param list
+ * @param index 从1开始计数的位置
+ * @return
+ */
+LNode *getNodeByIndex(LinkList list, int index);
+
+/**
+ * 根据指定的值查找节点
+ * @param list
+ * @param targetVal
+ * @return
+ */
+LNode *getNodeByVal(LinkList list, int targetVal);
 
 /**
  * 遍历输出单链表
