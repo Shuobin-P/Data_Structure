@@ -100,6 +100,32 @@ LNode *getNodeByVal(LinkList list, int targetVal) {
     return NULL;
 }
 
+void createListByInsertHead(LinkList &list) {
+    int inputVal = 0;
+    initList(list);
+    //用户输入一个元素就是在单链表上插入一个节点
+    printf("Please input the node val. If you input 111111, the process will be ended.\n");
+    scanf("%d", &inputVal);
+    while(inputVal != 111111) {
+        insertAfterNode(list, inputVal);
+        scanf("%d", &inputVal);
+    }
+}
+
+void createListByInsertTail(LinkList &list) {
+    int inputVal = 0;
+    //初始化单链表
+    initList(list);
+    LNode *tailPtr = list;
+    printf("Please input the node val. If you input 111111, the process will be ended.\n");
+    scanf("%d", &inputVal);
+    while(inputVal != 111111) {
+        insertAfterNode(tailPtr, inputVal);
+        tailPtr = tailPtr->next;
+        scanf("%d", &inputVal);
+    }
+}
+
 void traverseList(LinkList list) {
     LNode *p = list->next;
     printf("Traverse list result: ");

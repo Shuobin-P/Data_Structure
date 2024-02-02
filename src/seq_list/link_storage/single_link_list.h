@@ -2,7 +2,7 @@
 * @author: Shuobin
 * @date: 2024/1/31 15:16
 * @version: 1.0
-* @description: 
+* @description: 实现单链表以及相关操作
 ********************************************************************************/
 
 
@@ -83,6 +83,17 @@ LNode *getNodeByIndex(LinkList list, int index);
  */
 LNode *getNodeByVal(LinkList list, int targetVal);
 
+/**
+ * 通过头插法创建带dummy头节点的单链表，把用户输入的值作为新节点的值插入到单链表
+ * @param list
+ */
+void createListByInsertHead(LinkList &list);
+
+/**
+ * 通过尾插法创建带dummy头节点的单链表，把用户输入的值作为新节点的值插入到单链表
+ * @param list
+ */
+void createListByInsertTail(LinkList &list);
 /**
  * 遍历输出单链表
  * @param list
