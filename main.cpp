@@ -1,14 +1,17 @@
-#include "src/linear_list/link_storage/double_link_list.h"
-
+#include <stdio.h>
+#include "./src/linear_list/seq_storage/stack.h"
 int main() {
-    DouLinkList list;
-    initDoubleLinkList(list);
-    insertNodeAfterTarNode(list, createNode(1));
-//    insertNodeAfterTarNode(list, createNode(2));
-//    insertNodeAfterTarNode(list, createNode(3));
-    traverseList(list);
-    destroyList(list);
-    traverseList(list);
-    return 0;
-}
+    Stack stack;
+    init(stack);
+    push(stack, 1);
+    push(stack, 2);
+    push(stack, 3);
+    traverseStack(stack);
+    int holder = 0;
+    pop(stack, holder);
+    traverseStack(stack);
+    int topHolder = 0;
+    getStackTopEle(stack, topHolder);
+    printf("%d", topHolder);
 
+}
