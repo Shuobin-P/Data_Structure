@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "./src/linear_list/link_storage/stack/stack.h"
+#include "src/linear_list/seq_storage/queue/queue2.h"
+
 int main() {
-    Node *node = NULL;
+
 }
