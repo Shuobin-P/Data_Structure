@@ -31,7 +31,7 @@ int main() {
     insertEdge(g, 'A','C');
     insertEdge(g, 'B','E');
 
-    dfs(g, 1);
+    dfs(g, 2);
 
 
 }
