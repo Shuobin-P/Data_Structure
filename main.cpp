@@ -13,6 +13,11 @@ int main() {
     insertNode(g, '8');
     insertNode(g, '9');
     insertNode(g, '0');
+    insertNode(g, 'A');
+    insertNode(g, 'B');
+    insertNode(g, 'C');
+    insertNode(g, 'E');
+
     insertEdge(g, '1','2');
     insertEdge(g, '1','3');
     insertEdge(g, '1','4');
@@ -22,8 +27,11 @@ int main() {
     insertEdge(g, '4','8');
     insertEdge(g, '5','9');
     insertEdge(g, '6','0');
+    insertEdge(g, 'A','B');
+    insertEdge(g, 'A','C');
+    insertEdge(g, 'B','E');
 
-    bfs(g);
+    dfs(g, 1);
 
 
 }

@@ -8,13 +8,13 @@
 #ifndef DATA_STRUCTURE_AM_INDIR_GRAPH_H
 #define DATA_STRUCTURE_AM_INDIR_GRAPH_H
 #define VEX_TYPE char
-#define MAX_ROWS 10
-#define MAX_COLS 10
-#define MAX_NODES 10
+#define MAX_ROWS 20
+#define MAX_COLS 20
+#define MAX_NODES 20
 typedef struct {
-    short matrix[MAX_ROWS][MAX_COLS];
-    VEX_TYPE vexes[MAX_NODES];
-    int vexNum; //图中当前顶点数
+    short matrix[MAX_ROWS][MAX_COLS]; //存储边
+    VEX_TYPE vexes[MAX_NODES];   //存储图中的顶点
+    int vexNum;                  //图中当前顶点数
 }AMIndGraph;
 
 /**
@@ -45,10 +45,11 @@ bool insertEdge(AMIndGraph &g, VEX_TYPE xNode, VEX_TYPE yNode);
 void bfs(AMIndGraph &g);
 
 /**
- * 深度优先遍历图
+ * 深度优先遍历
  * @param g
+ * @param opt 1：递归实现 2：非递归实现
  */
-void dfs(AMIndGraph &g);
+void dfs(AMIndGraph &g, short opt);
 
 /**
  * 判断图是否还能插入新节点

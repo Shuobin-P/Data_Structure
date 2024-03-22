@@ -23,7 +23,7 @@ bool insertEdge(AMIndGraph &g, VEX_TYPE xNode, VEX_TYPE yNode) {
     int xIndex = findVex(g, xNode);
     int yIndex = findVex(g, yNode);
     if (xIndex < 0 || yIndex < 0) {
-        VEX_TYPE tmp = xIndex < 0 ? xNode: yNode;
+        VEX_TYPE tmp = xIndex < 0 ? xNode : yNode;
         printf("Exception: %c Element not found\n", tmp);
         return false;
     }
@@ -35,18 +35,18 @@ bool insertEdge(AMIndGraph &g, VEX_TYPE xNode, VEX_TYPE yNode) {
     return true;
 }
 
-void bfsNode(AMIndGraph &g, int targetIdx, bool* visited) {
+void bfsNode(AMIndGraph &g, int targetIdx, bool *visited) {
     //找到与targetIdx直接相连且未被访问的节点，放入队列
-    std::queue <int> queue;
+    std::queue<int> queue;
     queue.push(targetIdx);
     visited[targetIdx] = true;
     printf("%c ", g.vexes[targetIdx]);
-    while(queue.size() > 0) {
+    while (queue.size() > 0) {
         int eleIdx = queue.front();
         queue.pop();
         //找到与targetIdx直接相连且未被访问的节点，放入队列
-        for(int i = 0; i <= g.vexNum - 1; i++) {
-            if(g.matrix[eleIdx][i] == 1 && !visited[i]) {
+        for (int i = 0; i <= g.vexNum - 1; i++) {
+            if (g.matrix[eleIdx][i] == 1 && !visited[i]) {
                 queue.push(i);
                 visited[i] = true;
                 printf("%c ", g.vexes[i]);
@@ -58,12 +58,51 @@ void bfsNode(AMIndGraph &g, int targetIdx, bool* visited) {
 
 void bfs(AMIndGraph &g) {
     //注意：图可能有两个或以上连通分量
-    bool visited[g.vexNum] = {false};
-    for(int i = 0; i <= g.vexNum - 1; i++) {
-        if(!visited[i]) {
+    bool visited[g.vexNum];
+    for (int i = 0; i <= g.vexNum - 1; i++) {
+        visited[i] = false;
+    }
+    for (int i = 0; i <= g.vexNum - 1; i++) {
+        if (!visited[i]) {
             //从i节点作为起点开始访问
             bfsNode(g, i, visited);
         }
+    }
+}
+
+void dfsByRecursionImpl(AMIndGraph &g, int i, bool *visited) {
+    //visit 节点i
+    //找到与i相邻且未被访问的节点，依次递归访问
+    printf("%c ", g.vexes[i]);
+    visited[i] = true;
+    for (int j = 0;j <= g.vexNum - 1; j++) {
+        if(g.matrix[i][j] == 1 && !visited[j]) {
+            dfsByRecursionImpl(g, j, visited);
+        }
+    }
+}
+
+
+void dfsByRecursion(AMIndGraph &g) {
+    bool visited[g.vexNum];
+    for (int i = 0; i <= g.vexNum - 1; i++) {
+        visited[i] = false;
+    }
+    for (int i = 0; i <= g.vexNum - 1; i++) {
+        if (!visited[i]) {
+            //从i节点作为起点开始访问
+            dfsByRecursionImpl(g, i, visited);
+            printf("  ");
+        }
+    }
+}
+
+void dfs(AMIndGraph &g, short opt) {
+    if (opt == 1) {
+        //递归实现
+        dfsByRecursion(g);
+    } else if (opt == 2) {
+        //非递归实现
     }
 }
 
