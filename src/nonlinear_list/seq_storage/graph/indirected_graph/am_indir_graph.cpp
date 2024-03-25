@@ -75,8 +75,8 @@ void dfsByRecursionImpl(AMIndGraph &g, int i, bool *visited) {
     //找到与i相邻且未被访问的节点，依次递归访问
     printf("%c ", g.vexes[i]);
     visited[i] = true;
-    for (int j = 0;j <= g.vexNum - 1; j++) {
-        if(g.matrix[i][j] == 1 && !visited[j]) {
+    for (int j = 0; j <= g.vexNum - 1; j++) {
+        if (g.matrix[i][j] == 1 && !visited[j]) {
             dfsByRecursionImpl(g, j, visited);
         }
     }
@@ -99,12 +99,12 @@ void dfsByStackImpl(AMIndGraph &g, int i, bool *visited) {
     std::stack<int> stack;
     stack.push(i);
     visited[i] = true; //易错
-    while(stack.size() > 0) {
+    while (stack.size() > 0) {
         int ele = stack.top();
         stack.pop();
         printf("%c", g.vexes[ele]);
-        for (int j = g.vexNum - 1;j >= 0; j--) {
-            if(g.matrix[ele][j] == 1 && !visited[j]) {
+        for (int j = g.vexNum - 1; j >= 0; j--) {
+            if (g.matrix[ele][j] == 1 && !visited[j]) {
                 stack.push(j);
                 visited[j] = true; //易错
             }
@@ -125,6 +125,7 @@ void dfsByStack(AMIndGraph &g) {
     }
 
 }
+
 void dfs(AMIndGraph &g, short opt) {
     if (opt == 1) {
         //递归实现
