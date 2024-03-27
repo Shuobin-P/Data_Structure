@@ -150,7 +150,7 @@ void createListByInsertTailWithoutDummyHead(LinkList &list) {
 
 void traverseList(LinkList list) {
     LNode *p = list->next;
-    printf("Traverse list result: ");
+    printf("Traverse vexList result: ");
     while(p  != NULL) {
         printf("%d ", p->val);
         p = p->next;

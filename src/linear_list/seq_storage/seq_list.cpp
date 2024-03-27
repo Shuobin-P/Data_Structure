@@ -35,8 +35,8 @@ bool isFull(List *list) {
 }
 
 /**
- * Adding element at the end of the list
- * @param list Target list
+ * Adding element at the end of the vexList
+ * @param list Target vexList
  * @param e Element
  */
 void addElementAtEnd(List *list, int e) {
@@ -45,7 +45,7 @@ void addElementAtEnd(List *list, int e) {
     }
     list->dataArr[list->length] = e;
     list->length++;
-    //printf("Here is addElementAtEnd func, length = %d\n", list->length);
+    //printf("Here is addElementAtEnd func, length = %d\n", vexList->length);
 }
 
 /**

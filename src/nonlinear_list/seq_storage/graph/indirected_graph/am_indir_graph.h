@@ -27,7 +27,7 @@ AMIndGraph createGraph();
  * @param nodeVal 插入的节点值
  * @return 若返回-1，说明插入失败；否则，返回顶点的数组下标
  */
-int insertNode(AMIndGraph &g, VEX_TYPE nodeVal);
+int addVex(AMIndGraph &g, VEX_TYPE nodeVal);
 
 /**
  * 在指定的两个节点之间插入边
@@ -36,7 +36,7 @@ int insertNode(AMIndGraph &g, VEX_TYPE nodeVal);
  * @param yNode
  * @return true代表成功，false代表失败
  */
-bool insertEdge(AMIndGraph &g, VEX_TYPE xNode, VEX_TYPE yNode);
+bool addArc(AMIndGraph &g, VEX_TYPE xNode, VEX_TYPE yNode);
 
 /**
  * 广度优先遍历图

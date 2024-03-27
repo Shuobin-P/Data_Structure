@@ -14,13 +14,13 @@ AMIndGraph createGraph() {
     return newGraph;
 }
 
-int insertNode(AMIndGraph &g, VEX_TYPE nodeVal) {
+int addVex(AMIndGraph &g, VEX_TYPE nodeVal) {
     if (isFull(g)) return -1;
     g.vexes[g.vexNum++] = nodeVal;
     return g.vexNum - 1;
 }
 
-bool insertEdge(AMIndGraph &g, VEX_TYPE xNode, VEX_TYPE yNode) {
+bool addArc(AMIndGraph &g, VEX_TYPE xNode, VEX_TYPE yNode) {
     int xIndex = findVex(g, xNode);
     int yIndex = findVex(g, yNode);
     if (xIndex < 0 || yIndex < 0) {

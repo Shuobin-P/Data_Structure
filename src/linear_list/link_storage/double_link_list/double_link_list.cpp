@@ -56,7 +56,7 @@ void destroyList(DouLinkList &list) {
 void traverseList(DouLinkList &list) {
     if(list == NULL) return;
     DNode *p = list->next;
-    printf("Traverse Double list result: ");
+    printf("Traverse Double vexList result: ");
     while (p != NULL) {
         printf("%d ", p->val);
         p = p->next;
