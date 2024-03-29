@@ -5,6 +5,7 @@
 * @description: 邻接表实现无向图
 ********************************************************************************/
 #include <stdio.h>
+#include <malloc.h>
 #include <cstddef>
 #include "al_indir_graph.h"
 
@@ -38,17 +39,21 @@ bool addArcNodeToVex(ALGraph &g, int vexIdx, int arcIdx) {
         return false;
     }
     ArcNode *ptr = g.vexList[vexIdx].firstArc;
-    ArcNode arcNode = {arcIdx, NULL};
+//    ArcNode arcNode = {arcIdx, NULL};
+    ArcNode *t = (ArcNode *)malloc(sizeof(ArcNode));
+    t->i = arcIdx;
+    t->next = NULL;
     if (ptr == NULL) {
-        g.vexList[vexIdx].firstArc = &arcNode;
-        //printf("add a arc: vexIdx = %d, next=%p\t\n", arcNode.i, arcNode.next);
+        //printf("vex %c before adding arc, firstArc = %p, arcIdx = %d", g.vexList[vexIdx].data, g.vexList[vexIdx].firstArc, arcIdx);
+        g.vexList[vexIdx].firstArc = t;
+        //printf("vex %c after adding arc, firstArc = %p, arcIdx = %d\n", g.vexList[vexIdx].data, g.vexList[vexIdx].firstArc, arcIdx);
         g.arcNum++;
         return true;
     } else {
         while (ptr->next != NULL) {
             ptr = ptr->next;
         }
-        ptr->next = &arcNode;
+        ptr->next = t;
         g.arcNum++;
         return true;
     }

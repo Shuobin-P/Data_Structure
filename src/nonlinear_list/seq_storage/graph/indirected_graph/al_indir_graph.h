@@ -7,7 +7,7 @@
 #ifndef DATA_STRUCTURE_AL_INDIR_GRAPH_H
 #define DATA_STRUCTURE_AL_INDIR_GRAPH_H
 #define VEX_TYPE char       //图中结点的数据类型
-#define INIT_VEX_SIZE 10    //图中可容纳的初始最大结点容量
+#define INIT_VEX_SIZE 15    //图中可容纳的初始最大结点容量
 
 /**
  * 邻接表的边节点
