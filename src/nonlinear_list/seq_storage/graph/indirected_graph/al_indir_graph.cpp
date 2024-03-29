@@ -39,14 +39,11 @@ bool addArcNodeToVex(ALGraph &g, int vexIdx, int arcIdx) {
         return false;
     }
     ArcNode *ptr = g.vexList[vexIdx].firstArc;
-//    ArcNode arcNode = {arcIdx, NULL};
     ArcNode *t = (ArcNode *)malloc(sizeof(ArcNode));
     t->i = arcIdx;
     t->next = NULL;
     if (ptr == NULL) {
-        //printf("vex %c before adding arc, firstArc = %p, arcIdx = %d", g.vexList[vexIdx].data, g.vexList[vexIdx].firstArc, arcIdx);
         g.vexList[vexIdx].firstArc = t;
-        //printf("vex %c after adding arc, firstArc = %p, arcIdx = %d\n", g.vexList[vexIdx].data, g.vexList[vexIdx].firstArc, arcIdx);
         g.arcNum++;
         return true;
     } else {
