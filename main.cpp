@@ -28,7 +28,6 @@ int main() {
     printf("5: %p %d\n", g.vexList[0].firstArc, g.vexList[0].firstArc->i);
     printf("6: %p %d\n", g.vexList[0].firstArc, g.vexList[0].firstArc->i);
     printf("1: vex[0]=%c\n", g.vexList[0].data);
-
 }
 
 
