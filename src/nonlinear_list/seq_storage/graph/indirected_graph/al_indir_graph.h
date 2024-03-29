@@ -22,7 +22,7 @@ typedef struct ArcNode {
  */
 typedef struct VNode {
     VEX_TYPE data;     //节点中的数据
-    ArcNode *firstArc; //指向的第一个边节点
+    ArcNode *firstArc;
 } VNodeList[INIT_VEX_SIZE];
 
 typedef struct ALGraph {

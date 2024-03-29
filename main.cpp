@@ -29,8 +29,9 @@ int main() {
     addArc(g, '1','2');
     addArc(g, '1','3');
     addArc(g, '2','3');
+    addArc(g, 'F','G');
 
-    dfs(g);
+    bfs(g);
 }
 
 

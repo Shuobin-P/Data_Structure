@@ -7,7 +7,10 @@
 #include <stdio.h>
 #include <malloc.h>
 #include <cstddef>
+#include <queue>
 #include "al_indir_graph.h"
+
+using namespace std;
 
 ALGraph getALGraph() {
     ALGraph g = {{}, 0, 0, INIT_VEX_SIZE};
@@ -39,7 +42,7 @@ bool addArcNodeToVex(ALGraph &g, int vexIdx, int arcIdx) {
         return false;
     }
     ArcNode *ptr = g.vexList[vexIdx].firstArc;
-    ArcNode *t = (ArcNode *)malloc(sizeof(ArcNode));
+    ArcNode *t = (ArcNode *) malloc(sizeof(ArcNode));
     t->i = arcIdx;
     t->next = NULL;
     if (ptr == NULL) {
@@ -82,6 +85,34 @@ void dfs(ALGraph &g) {
         }
     }
 
+}
+
+void bfs(ALGraph &g) {
+    bool visited[g.vexNum];
+    for (int i = 0; i <= g.vexNum - 1; i++) {
+        visited[i] = false;
+    }
+    queue<int> queue;
+    for (int i = 0; i <= g.vexNum - 1; i++) {
+        if (!visited[i]) {
+            queue.push(i);
+            visited[i] = true;
+            while (queue.size() > 0) {
+                int head = queue.front();
+                queue.pop();
+                printf("%c ", g.vexList[head].data);
+                ArcNode *ptr = g.vexList[head].firstArc;
+                while (ptr != NULL) {
+                    if (!visited[ptr->i]) {
+                        queue.push(ptr->i);
+                        visited[ptr->i] = true;
+                    }
+                    ptr = ptr->next;
+                }
+            }
+        }
+    }
+    printf("\n");
 }
 
 bool isFull(ALGraph &g) {
