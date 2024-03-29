@@ -14,7 +14,7 @@ int main() {
 //    addVex(g, 'I');
 //    addVex(g, 'J');
 
-    addArc(g, 'A','B');
+    addArc(g, 'A', 'B');
 //    addArc(g, 'A','C');
 //    addArc(g, 'A','D');
 //    addArc(g, 'B','E');
@@ -23,15 +23,11 @@ int main() {
 //    addArc(g, 'C','G');
 //    addArc(g, 'F','J');
 //    addArc(g, 'D','H');
-    //问题：g.vexList[0].firstArc->next
-    printf("1: %p\n", g.vexList[0].firstArc->next);
-    printf("After\n");
-    printf("2: %p\n", g.vexList[0].firstArc->next);
-
-    if(g.vexList[0].firstArc->next != NULL) {
-        printf("A's neightbour arcnode's NEXT PTR changed when vexIdx = %d, and it changed to= %p\n",-1 , g.vexList[0].firstArc->next);
-    }
-    dfs(g);
+    //FIXME vexList[0]保存了图的第一个结点:A，g.vexList[0].firstArc指向第一个边结点，存储了结点B的下标，g.vexList[0].firstArc->i的值理论上为1，但实际运行
+    // 结果不是；而且下面两句相同的打印语句，同一个变量g.vexList[0].firstArc->i的值竟然不一样。
+    printf("5: %p %d\n", g.vexList[0].firstArc, g.vexList[0].firstArc->i);
+    printf("6: %p %d\n", g.vexList[0].firstArc, g.vexList[0].firstArc->i);
+    printf("1: vex[0]=%c\n", g.vexList[0].data);
 
 }
 

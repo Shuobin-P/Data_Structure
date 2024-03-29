@@ -24,19 +24,37 @@ int addVex(ALGraph &g, VEX_TYPE vex) {
 bool addArc(ALGraph &g, VEX_TYPE vex1, VEX_TYPE vex2) {
     int vex1Idx = isExist(g, vex1);
     int vex2Idx = isExist(g, vex2);
-
     if (vex1Idx == -1 || vex2Idx == -1) { //保证两个结点已经存在
         printf("Exception: %c doesn't exist", vex1Idx == -1 ? vex1 : vex2);
         return false;
     }
-    ArcNode arcVex2 = {vex2Idx, NULL};
-    ArcNode arcVex1 = {vex1Idx, NULL};
-    addArcNodeToVex(g, vex1Idx, arcVex2);
-    addArcNodeToVex(g, vex2Idx, arcVex1);
+    addArcNodeToVex(g, vex1Idx, vex2Idx);
+    addArcNodeToVex(g, vex2Idx, vex1Idx);
     return true;
 }
 
-void dfsImpl(ALGraph &g, int vexIdx, bool* visited) {
+bool addArcNodeToVex(ALGraph &g, int vexIdx, int arcIdx) {
+    if (vexIdx + 1 > g.vexNum || vexIdx + 1 > g.maxCapacity) { //防止表头结点不存在
+        return false;
+    }
+    ArcNode *ptr = g.vexList[vexIdx].firstArc;
+    ArcNode arcNode = {arcIdx, NULL};
+    if (ptr == NULL) {
+        g.vexList[vexIdx].firstArc = &arcNode;
+        //printf("add a arc: vexIdx = %d, next=%p\t\n", arcNode.i, arcNode.next);
+        g.arcNum++;
+        return true;
+    } else {
+        while (ptr->next != NULL) {
+            ptr = ptr->next;
+        }
+        ptr->next = &arcNode;
+        g.arcNum++;
+        return true;
+    }
+}
+
+void dfsImpl(ALGraph &g, int vexIdx, bool *visited) {
     visited[vexIdx] = true;
     printf("%c ", g.vexList[vexIdx].data);
     ArcNode *ptr = g.vexList[vexIdx].firstArc;
@@ -62,26 +80,6 @@ void dfs(ALGraph &g) {
         }
     }
 
-}
-
-bool addArcNodeToVex(ALGraph &g, int vexIdx, ArcNode &arc) {
-    if (vexIdx + 1 > g.vexNum || vexIdx + 1 > g.maxCapacity) { //防止表头结点不存在
-        return false;
-    }
-    ArcNode *ptr = g.vexList[vexIdx].firstArc;
-    if (ptr == NULL) {
-//        printf("Add=%p", arc.next);
-        g.vexList[vexIdx].firstArc = &arc;
-        g.arcNum++;
-        return true;
-    }
-    while (ptr->next != NULL) {
-        ptr = ptr->next;
-    }
-    ptr->next = &arc;
-    //printf("ArcNode idx=%d, letter= %c\n", arc.i, g.vexList[arc.i].data);
-    g.arcNum++;
-    return true;
 }
 
 bool isFull(ALGraph &g) {

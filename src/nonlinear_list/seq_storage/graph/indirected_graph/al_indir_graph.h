@@ -14,7 +14,7 @@
  */
 typedef struct ArcNode {
     int i;  //边所指向的节点在vexList中的下标
-    ArcNode *next;
+    struct ArcNode *next;
 } ArcNode;
 
 /**
@@ -23,7 +23,7 @@ typedef struct ArcNode {
 typedef struct VNode {
     VEX_TYPE data;     //节点中的数据
     ArcNode *firstArc; //指向的第一个边节点
-} VNode, VNodeList[INIT_VEX_SIZE];
+} VNodeList[INIT_VEX_SIZE];
 
 typedef struct ALGraph {
     VNodeList vexList;
@@ -60,7 +60,7 @@ bool addArc(ALGraph &g, VEX_TYPE vex1, VEX_TYPE vex2);
  * @param arc 边节点
  * @return
  */
-bool addArcNodeToVex(ALGraph &g, int vexIdx, ArcNode &arc);
+bool addArcNodeToVex(ALGraph &g, int vexIdx, int arcIdx);
 
 void dfs(ALGraph &g);
 
