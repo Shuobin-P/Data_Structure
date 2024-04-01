@@ -1,7 +1,6 @@
-#include ".\src\nonlinear_list\seq_storage\graph\indirected_graph\al_indir_graph.h"
-
+#include ".\src\nonlinear_list\seq_storage\graph\directed_graph\al_dir_graph.h"
 int main() {
-    ALGraph g = getALGraph();
+    ALDirGraph g = getALDirGraph();
     addVex(g, 'A');
     addVex(g, 'B');
     addVex(g, 'C');
@@ -29,7 +28,6 @@ int main() {
     addArc(g, '1', '3');
     addArc(g, '2', '3');
     addArc(g, 'F', 'G');
-
     dfs(g, 2);
 }
 

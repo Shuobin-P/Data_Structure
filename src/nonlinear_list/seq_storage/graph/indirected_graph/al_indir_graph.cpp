@@ -12,7 +12,6 @@
 
 #include "al_indir_graph.h"
 
-
 using namespace std;
 
 ALGraph getALGraph() {
