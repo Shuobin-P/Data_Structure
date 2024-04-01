@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include ".\src\nonlinear_list\seq_storage\graph\indirected_graph\al_indir_graph.h"
 
 int main() {
@@ -17,21 +16,21 @@ int main() {
     addVex(g, '2');
     addVex(g, '3');
 
-    addArc(g, 'A','B');
-    addArc(g, 'A','C');
-    addArc(g, 'A','D');
-    addArc(g, 'B','E');
-    addArc(g, 'E','I');
-    addArc(g, 'C','F');
-    addArc(g, 'C','G');
-    addArc(g, 'F','J');
-    addArc(g, 'D','H');
-    addArc(g, '1','2');
-    addArc(g, '1','3');
-    addArc(g, '2','3');
-    addArc(g, 'F','G');
+    addArc(g, 'A', 'B');
+    addArc(g, 'A', 'C');
+    addArc(g, 'A', 'D');
+    addArc(g, 'B', 'E');
+    addArc(g, 'E', 'I');
+    addArc(g, 'C', 'F');
+    addArc(g, 'C', 'G');
+    addArc(g, 'F', 'J');
+    addArc(g, 'D', 'H');
+    addArc(g, '1', '2');
+    addArc(g, '1', '3');
+    addArc(g, '2', '3');
+    addArc(g, 'F', 'G');
 
-    bfs(g);
+    dfs(g, 2);
 }
 
 

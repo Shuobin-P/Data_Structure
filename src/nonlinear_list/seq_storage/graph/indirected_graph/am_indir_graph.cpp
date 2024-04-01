@@ -9,7 +9,7 @@
 #include <stack>
 #include "am_indir_graph.h"
 
-AMIndGraph createGraph() {
+AMIndGraph getGraph() {
     AMIndGraph newGraph = {0, 0, 0};
     return newGraph;
 }

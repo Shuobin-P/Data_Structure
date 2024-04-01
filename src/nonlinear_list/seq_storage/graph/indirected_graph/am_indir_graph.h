@@ -20,7 +20,7 @@ typedef struct {
 /**
  * 创建一个新图
  */
-AMIndGraph createGraph();
+AMIndGraph getGraph();
 /**
  * 向图中增加新的节点
  * @param g 目标图

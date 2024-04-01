@@ -8,7 +8,10 @@
 #include <malloc.h>
 #include <cstddef>
 #include <queue>
+#include <stack>
+
 #include "al_indir_graph.h"
+
 
 using namespace std;
 
@@ -72,7 +75,7 @@ void dfsImpl(ALGraph &g, int vexIdx, bool *visited) {
 
 }
 
-void dfs(ALGraph &g) {
+void dfsByRecur(ALGraph &g) {
     //创建一个visited数组记录深度遍历过程中结点的访问情况
     bool visited[g.vexNum];
     for (int i = 0; i <= g.vexNum - 1; i++) {
@@ -85,6 +88,48 @@ void dfs(ALGraph &g) {
         }
     }
 
+}
+
+void dfsByStack(ALGraph &g) {
+    stack<int> stack, t;
+    bool visited[g.vexNum];
+    for (int i = 0; i <= g.vexNum - 1; i++) {
+        visited[i] = false;
+    }
+    for (int i = 0; i <= g.vexNum - 1; i++) {
+        if(!visited[i]) {
+            stack.push(i);
+            visited[i] = true;
+            while (stack.size() > 0) {
+                int top = stack.top();
+                stack.pop();
+                printf("%c ", g.vexList[top].data);
+                //把top相邻且未被访问的结点，从右往左依次加入栈
+                ArcNode *ptr = g.vexList[top].firstArc;
+                while (ptr != NULL) {   //死循环
+                    if (!visited[ptr->i]) {
+                        t.push(ptr->i);
+                        visited[ptr->i] = true;
+                        ptr = ptr->next;
+                    } else {
+                        ptr = ptr->next;
+                    }
+                }
+                while (t.size() > 0) {
+                    stack.push(t.top());
+                    t.pop();
+                }
+            }
+        }
+    }
+}
+
+void dfs(ALGraph &g, short opt) {
+    if (opt == 1) {
+        dfsByRecur(g);
+    } else if (opt == 2) {
+        dfsByStack(g);
+    }
 }
 
 void bfs(ALGraph &g) {

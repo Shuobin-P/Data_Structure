@@ -62,8 +62,17 @@ bool addArc(ALGraph &g, VEX_TYPE vex1, VEX_TYPE vex2);
  */
 bool addArcNodeToVex(ALGraph &g, int vexIdx, int arcIdx);
 
-void dfs(ALGraph &g);
+/**
+ * 深度优先遍历
+ * @param g
+ * @param opt 1：递归实现 2：非递归实现
+ */
+void dfs(ALGraph &g, short opt);
 
+/**
+ * 广度优先遍历
+ * @param g
+ */
 void bfs(ALGraph &g);
 
 /**
