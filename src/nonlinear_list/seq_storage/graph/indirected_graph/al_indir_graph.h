@@ -75,6 +75,11 @@ void dfs(ALGraph &g, short opt);
  */
 void bfs(ALGraph &g);
 
+/**
+ * 使用BFS实现单源最短路径算法
+ * @param g
+ * @param idx 使用单源最短路径算法而被选择的元素的下标；解释：g.vexList[idx].data即为起点元素
+ */
 void bfsMinDistance(ALGraph &g, int idx);
 
 /**
