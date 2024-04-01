@@ -15,17 +15,17 @@ typedef struct {
     short matrix[MAX_ROWS][MAX_COLS];   //存储边
     VEX_TYPE vexes[MAX_NODES];          //存储图中的顶点
     int vexNum;                         //图中当前顶点数
-} AMDirGraph;
+} AmDirGraph;
 
-AMDirGraph getGraph();
+AmDirGraph getAmDirGraph();
 
-int addVex(AMDirGraph &g, VEX_TYPE nodeVal);
+int addVex(AmDirGraph &g, VEX_TYPE nodeVal);
 
-bool addArc(AMDirGraph &g, VEX_TYPE xNode, VEX_TYPE yNode);
+bool addArc(AmDirGraph &g, VEX_TYPE vex1, VEX_TYPE vex2);
 
-void bfs(AMDirGraph &g);
+void bfs(AmDirGraph &g);
 
-void dfs(AMDirGraph &g, short opt);
+void dfs(AmDirGraph &g, short opt);
 
 
 #endif //DATA_STRUCTURE_AM_DIR_GRAPH_H

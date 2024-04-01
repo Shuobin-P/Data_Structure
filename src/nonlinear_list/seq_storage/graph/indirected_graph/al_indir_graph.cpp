@@ -31,7 +31,7 @@ bool addArc(ALGraph &g, VEX_TYPE vex1, VEX_TYPE vex2) {
     int vex1Idx = isExist(g, vex1);
     int vex2Idx = isExist(g, vex2);
     if (vex1Idx == -1 || vex2Idx == -1) { //保证两个结点已经存在
-        printf("Exception: %c doesn't exist", vex1Idx == -1 ? vex1 : vex2);
+        printf("Exception: %c doesn't exist\n", vex1Idx == -1 ? vex1 : vex2);
         return false;
     }
     addArcNodeToVex(g, vex1Idx, vex2Idx);
@@ -96,7 +96,7 @@ void dfsByStack(ALGraph &g) {
         visited[i] = false;
     }
     for (int i = 0; i <= g.vexNum - 1; i++) {
-        if(!visited[i]) {
+        if (!visited[i]) {
             stack.push(i);
             visited[i] = true;
             while (stack.size() > 0) {
@@ -155,6 +155,36 @@ void bfs(ALGraph &g) {
                 }
             }
         }
+    }
+    printf("\n");
+}
+
+void bfsMinDistance(ALGraph &g, int idx) {
+    queue<int> queue;
+    bool visited[g.vexNum];
+    int distance[g.vexNum]; //存储从下标=idx的元素到其它节点的最短路径
+    for (int i = 0; i <= g.vexNum - 1; i++) {
+        visited[i] = false;
+        distance[i] = -1;
+    }
+    distance[idx] = 0;
+    queue.push(idx);
+    visited[idx] = true;
+    while (queue.size() > 0) {
+        int head = queue.front();
+        queue.pop();
+        ArcNode *ptr = g.vexList[head].firstArc;
+        while (ptr != NULL) {
+            if (!visited[ptr->i]) {
+                queue.push(ptr->i);
+                visited[ptr->i] = true;
+                distance[ptr->i] = distance[head] + 1;
+            }
+            ptr = ptr->next;
+        }
+    }
+    for (int i = 0; i <= g.vexNum - 1; i++) {
+        printf("%c to %c's shortest distance=%d\n", g.vexList[idx].data, g.vexList[i].data, distance[i]);
     }
     printf("\n");
 }

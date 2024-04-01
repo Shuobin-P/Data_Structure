@@ -75,6 +75,8 @@ void dfs(ALGraph &g, short opt);
  */
 void bfs(ALGraph &g);
 
+void bfsMinDistance(ALGraph &g, int idx);
+
 /**
  * 图中是否能继续添加新的节点
  * @param g 目标图

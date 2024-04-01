@@ -8,3 +8,12 @@
 
 
 #include "am_dir_graph.h"
+
+AmDirGraph getAmDirGraph() {
+    AmDirGraph g;
+    g.vexNum = 0;
+    for (int i = 0; i <= MAX_NODES - 1; i++) {
+        g.vexes[i] = '\0';
+    }
+    return AmDirGraph();
+}
