@@ -67,4 +67,13 @@ int isExist(ALDirGraph &g, VEX_TYPE e);
 
 bool addArcNodeToVex(ALDirGraph &g, int vexIdx, int arcIdx);
 
+/**
+ * 基于深度优先遍历，判断vi顶点和vj顶点之间是否存在路径
+ * @param g
+ * @param i vi
+ * @param j vj
+ * @return
+ */
+bool arcIsExist(ALDirGraph &g, int i, int j);
+
 #endif //DATA_STRUCTURE_AL_DIR_GRAPH_H

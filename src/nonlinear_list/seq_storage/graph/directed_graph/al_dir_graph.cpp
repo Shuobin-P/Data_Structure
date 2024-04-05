@@ -155,4 +155,41 @@ int isExist(ALDirGraph &g, VEX_TYPE e) {
     return -1;
 }
 
+bool existArc(ALDirGraph &g, bool *visited, int root, int target) {
+    //结束条件：
+    //if(root == target) return true;
+    //ptr = g.vexList[root].next
+    /*
+     * while(!(isExist or ptr == NULL )) {
+     *  tmp = existArc(g, visited, ptr->i, target, isExist)
+     *  if(tmp) {
+     *      return true
+     *  }
+     *  ptr = ptr -> next
+     * }
+     * return false
+    */
+    if (root == target) return true;
+    visited[root] = true;
+    ArcNode *ptr = g.vexList[root].firstArc;
+    while (!(ptr == NULL)) {
+        if (!visited[ptr->i]) {
+            bool tmp = existArc(g, visited, ptr->i, target);
+            if (tmp) return true;
+        }
+        ptr = ptr->next;
+    }
+    return false;
+}
+
+bool arcIsExist(ALDirGraph &g, int i, int j) {
+    //基于深度优先遍历实现，是否存在vi到vj的路径
+    //从vi出发进行深度有先遍历
+    bool visited[g.vexNum];
+    for (int i = 0; i <= g.vexNum - 1; i++) {
+        visited[i] = false;
+    }
+    return existArc(g, visited, i, j);
+}
+
 

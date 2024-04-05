@@ -1,8 +1,8 @@
 #include<stdio.h>
-#include ".\src\nonlinear_list\seq_storage\graph\directed_graph\am_dir_graph.h"
+#include ".\src\nonlinear_list\seq_storage\graph\directed_graph\al_dir_graph.h"
 
 int main() {
-    AmDirGraph g = getAmDirGraph();
+    ALDirGraph g = getALDirGraph();
     addVex(g, 'A');
     addVex(g, 'B');
     addVex(g, 'C');
@@ -24,8 +24,7 @@ int main() {
     addArc(g, 'C', 'G');
     addArc(g, 'A', 'D');
     addArc(g, 'D', 'H');
-    dfs(g,1);
-    dfs(g,2);
+    printf("%d", arcIsExist(g, 2, 7));
 
 
 }
