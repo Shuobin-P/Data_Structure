@@ -24,7 +24,9 @@ int main() {
     addArc(g, 'C', 'G');
     addArc(g, 'A', 'D');
     addArc(g, 'D', 'H');
-    printf("%d", arcIsExist(g, 2, 7));
+    int i = 0;
+    int j = 9;
+    printf("exist arc between %c and %c =%d", g.vexList[i].data, g.vexList[j].data, arcIsExist(g, i, j));
 
 
 }
