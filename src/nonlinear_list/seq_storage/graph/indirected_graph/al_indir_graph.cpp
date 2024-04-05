@@ -162,7 +162,7 @@ void bfs(ALGraph &g) {
 void bfsMinDistance(ALGraph &g, int idx) {
     queue<int> queue;
     bool visited[g.vexNum];
-    int distance[g.vexNum]; //存储从下标=idx的元素到其它节点的最短路径
+    int distance[g.vexNum]; //存储从下标为idx的元素到其它节点的最短路径
     for (int i = 0; i <= g.vexNum - 1; i++) {
         visited[i] = false;
         distance[i] = -1;

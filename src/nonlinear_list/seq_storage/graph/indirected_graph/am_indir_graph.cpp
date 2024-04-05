@@ -123,7 +123,6 @@ void dfsByStack(AMIndGraph &g) {
             printf("  ");
         }
     }
-
 }
 
 void dfs(AMIndGraph &g, short opt) {
