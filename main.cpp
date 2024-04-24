@@ -2,12 +2,10 @@
 #include "src/algorithm/sort/sort.h"
 
 int main() {
-    int arr[] = {7, 6, 5, 4, 3, 2, 1};
-    int arrLen = 7;
-    quickSort(arr, arrLen);
-    for (int i = 0; i < arrLen; i++) {
-        printf("%d ", arr[i]);
-    }
+    int arr[] = {-1, 53, 17, 78, 9, 45, 65, 87, 32};
+    int arrLen = 8;
+    heapSort(arr, arrLen);
+
 }
 
 

@@ -36,4 +36,11 @@ void bubbleSort(int *arr, int arrLen, short opt);
  */
 void quickSort(int *arr, int arrLen);
 
+/**
+ * 堆排序
+ * @param arr
+ * @param arrLen
+ */
+void heapSort(int *arr, int arrLen);
+
 #endif //DATA_STRUCTURE_SORT_H
