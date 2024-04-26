@@ -102,7 +102,7 @@ void quickSort(int *arr, int arrLen) {
 }
 
 /**
- * 保证idx对应的元素是大根堆，递归实现
+ * 保证idx对应的元素是大根堆，递归实现。
  * @param arr
  * @param idx 需调整为大根堆的元素的下标
  */
@@ -126,7 +126,7 @@ void keepMaxHeapRecurImpl(int *arr, int arrLen, int idx) {
 }
 
 /**
- * 保证idx对应的元素是大根堆的非递归实现
+ * 保证idx对应的元素是大根堆的非递归实现。使得堆排序整体复杂度为O(NlogN)的选择，logN是以2为底。
  * @param arr
  * @param arrLen
  * @param idx 需调整为大根堆的元素的下标
