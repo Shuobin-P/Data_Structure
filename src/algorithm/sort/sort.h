@@ -6,7 +6,7 @@
 ********************************************************************************/
 #ifndef DATA_STRUCTURE_SORT_H
 #define DATA_STRUCTURE_SORT_H
-#define KEEP_HEAP_OPT 2 //选择KEEP_HEAP算法 1：递归实现 2：非递归实现
+#define KEEP_MAX_HEAP_OPT 2 //选择KEEP_MAX_HEAP算法 1：递归实现 2：非递归实现
 
 /**
  * 插入排序算法实现

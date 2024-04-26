@@ -167,7 +167,7 @@ void buildMaxHeap(int *arr, int arrLen) {
     for (int i = arrLen / 2; i >= 1; i--) {
         //arr[i]即为要调整为大根堆的非叶子结点
         //判断arr[i]大于arr[2i]和arr[2i+1]，如果不是，则找到最大的元素与arr[i]交换。但是下坠后的arr[i]，还要保证大根堆的性质，需要继续进行处理
-        keepMaxHeap(arr, arrLen, i, KEEP_HEAP_OPT);
+        keepMaxHeap(arr, arrLen, i, KEEP_MAX_HEAP_OPT);
     }
 }
 
@@ -178,7 +178,7 @@ void heapSort(int *arr, int arrLen) {
         arr[0] = arr[1];
         arr[1] = arr[last];
         arr[last] = arr[0];
-        keepMaxHeap(arr, --last, 1, KEEP_HEAP_OPT);
+        keepMaxHeap(arr, --last, 1, KEEP_MAX_HEAP_OPT);
     }
     for (int i = 1; i <= arrLen; i++) {
         printf("%d ", arr[i]);
