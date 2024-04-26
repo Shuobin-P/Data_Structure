@@ -6,6 +6,7 @@
 ********************************************************************************/
 #ifndef DATA_STRUCTURE_SORT_H
 #define DATA_STRUCTURE_SORT_H
+#define KEEP_HEAP_OPT 2 //选择KEEP_HEAP算法 1：递归实现 2：非递归实现
 
 /**
  * 插入排序算法实现
@@ -38,8 +39,8 @@ void quickSort(int *arr, int arrLen);
 
 /**
  * 堆排序
- * @param arr
- * @param arrLen
+ * @param arr 待排序数组，arr[0]作为暂存区使用。
+ * @param arrLen 数组长度，不包括arr[0]。
  */
 void heapSort(int *arr, int arrLen);
 
