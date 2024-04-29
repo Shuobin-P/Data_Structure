@@ -237,16 +237,57 @@ void mergeSortOptOne(int *arr, int *newArr, int left, int right) {
     merge(lNewArr, rNewArr, mid - left + 1, right - mid, newArr);
 }
 
-//TODO
-void mergeSortOptTwo(int *arr, int *tmpArr, int left, int right) {
+/**
+ * 把arr中从left->mid, mid+1->right之间的元素排序
+ * @param arr 存储待排序数据的数组
+ * @param tmpArr 缓存数组
+ * @param left 第一个已排序的数组的起始地址（在arr中的地址）
+ * @param mid 第一个已排序的数组的结束地址，mid+1即为第二个已排序的数组的起始地址
+ * @param right 第二个已排序的数组的结束地址
+ */
+void merge(int *arr, int *tmpArr, int left, int mid, int right) {
+    int ptr = left;
+    int lPtr = left;
+    int rPtr = mid + 1;
+    for (int i = left; i <= right; i++) {
+        tmpArr[i] = arr[i];
+    }
+    while (lPtr <= mid && rPtr <= right) {
+        if (tmpArr[lPtr] > tmpArr[rPtr]) {
+            arr[ptr++] = tmpArr[rPtr++];
+        } else if (tmpArr[lPtr] <= tmpArr[rPtr]) {
+            arr[ptr++] = tmpArr[lPtr++];
+        }
+    }
+    while (lPtr <= mid) {
+        //把lPtr指向的数组剩余元素加入到arr
+        arr[ptr++] = tmpArr[lPtr++];
+    }
+    while (rPtr <= right) {
+        arr[ptr++] = tmpArr[rPtr++];
+    }
+}
 
+/**
+ * 对arr进行归并排序后的数据依然存储在arr中
+ * @param arr
+ * @param tmpArr 缓存arr数据的数组
+ * @param left 待排序序列的在arr的起始地址
+ * @param right 待排序序列的在arr的终止地址
+ */
+void mergeSortOptTwo(int *arr, int *tmpArr, int left, int right) {
+    if (left >= right) return;
+    int mid = left + (right - left) / 2;
+    mergeSortOptTwo(arr, tmpArr, left, mid);
+    mergeSortOptTwo(arr, tmpArr, mid + 1, right);
+    merge(arr, tmpArr, left, mid, right);
 }
 
 void mergeSort(int *arr, int arrLen, int *newArr, short opt) {
     if (opt == 1) {
         mergeSortOptOne(arr, newArr, 0, arrLen - 1);
     } else if (opt == 2) {
-
+        mergeSortOptTwo(arr, newArr, 0, arrLen - 1);
     }
 }
 
