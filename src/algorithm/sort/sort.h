@@ -44,4 +44,12 @@ void quickSort(int *arr, int arrLen);
  */
 void heapSort(int *arr, int arrLen);
 
+/**
+ * 归并排序
+ * @param arr 存储了未排序数据的数组
+ * @param arrLen arr数组的长度
+ * @param opt 1: 将arr中的数据归并排序后，已排序序列存储在newArr中 2: 对arr进行归并排序后的数据依然存储在arr中，而不是在newArr中
+ */
+void mergeSort(int *arr, int arrLen, int *newArr, short opt);
+
 #endif //DATA_STRUCTURE_SORT_H

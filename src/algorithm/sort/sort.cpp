@@ -5,6 +5,7 @@
 * @description: 排序算法实现
 ********************************************************************************/
 #include <stdio.h>
+#include <stdlib.h>
 #include "sort.h"
 
 void insertionSort(int *arr, int arrLen) {
@@ -184,5 +185,68 @@ void heapSort(int *arr, int arrLen) {
         printf("%d ", arr[i]);
     }
     printf("\n");
+}
+
+/**
+ * 将lArr，rArr两个有序数组合并到新数组newArr中
+ * @param lArr
+ * @param rArr
+ * @param lArrLen
+ * @param rArrLen
+ * @param newArr 合并了lArr和rArr两个有序数组的新数组
+ */
+void merge(int *lArr, int *rArr, int lArrLen, int rArrLen, int *newArr) {
+    int lPtr, rPtr, newArrPtr = 0;
+    while (lPtr < lArrLen && rPtr < rArrLen) {
+        if (lArr[lPtr] > rArr[rPtr]) {
+            newArr[newArrPtr++] = rArr[rPtr++];
+        } else {   //保证该排序算法是稳定的
+            newArr[newArrPtr++] = lArr[lPtr++];
+        }
+    }
+    //把 lArr剩余部分加入到newArr
+    while (lPtr < lArrLen) {
+        newArr[newArrPtr++] = lArr[lPtr++];
+    }
+    //把 rArr剩余部分加入到newArr
+    while (rPtr < rArrLen) {
+        newArr[newArrPtr++] = rArr[rPtr++];
+    }
+}
+
+/**
+ * 排序后的数据在新数组newArr中，如果需要让排序好的数组的数据依然在arr中，可以使用另外一种实现方式。
+ * @param arr 待排序数组
+ * @param newArr 存储排序后的数组数据
+ * @param left 待排序序列在arr中的开始位置
+ * @param right 待排序序列在arr中的结束位置
+ */
+void mergeSortOptOne(int *arr, int *newArr, int left, int right) {
+    //将arr分成两部分，分别排好序，然后再将两部分合并即可得到最终的序列
+    if (left == right) {
+        //需要把数据放入到newArr中
+        newArr[0] = arr[left];   //IMPORTANT 易忘，易错
+        return;
+    }
+    int mid = left + (right - left) / 2;
+    int lNewArr[mid - left + 1];
+    int rNewArr[right - mid];
+    mergeSortOptOne(arr, lNewArr, left, mid);
+    mergeSortOptOne(arr, rNewArr, mid + 1, right);
+    //合并lNewArr和rNewArr，将其放入newArr中
+    merge(lNewArr, rNewArr, mid - left + 1, right - mid, newArr);
+}
+
+//TODO
+void mergeSortOptTwo(int *arr, int *tmpArr, int left, int right) {
+
+}
+
+void mergeSort(int *arr, int arrLen, int *newArr, short opt) {
+    if (opt == 1) {
+        mergeSortOptOne(arr, newArr, 0, arrLen - 1);
+    } else if (opt == 2) {
+
+    }
 }
 

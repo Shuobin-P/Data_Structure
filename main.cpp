@@ -1,10 +1,16 @@
-#include <stdio.h>
+#include<stdio.h>
 #include "src/algorithm/sort/sort.h"
 
 int main() {
-    int arr[] = {-1, 53, 17, 78, 9, 45, 65, 87, 32};
     int arrLen = 8;
-    heapSort(arr, arrLen);
+    int arr[] = {8, 7, 6, 5, 4, 3, 2, 1};
+    int newArr[arrLen];
+    mergeSort(arr, arrLen, newArr, 1);
+    printf("\nFinal Result:\n");
+    for (int i = 0; i < arrLen; i++) {
+        printf("%d ", newArr[i]);
+    }
+    printf("\n");
 }
 
 
