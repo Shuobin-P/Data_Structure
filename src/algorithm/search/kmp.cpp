@@ -2,10 +2,8 @@
 * @author: Shuobin
 * @date: 2024/5/22 17:26
 * @version: 1.0
-* @description: 
+* @description: KMP模式匹配算法实现
 ********************************************************************************/
-#include <stdio.h>
-
 
 #include "kmp.h"
 
