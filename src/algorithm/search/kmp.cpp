@@ -18,7 +18,7 @@ void createNextArr(int *next, int nextLen, char *substr) {
     next[1] = 0;
     for (int i = 2; i <= nextLen - 1; i++) {    //i就是匹配失败的下标
         int modePtr = i - 1;
-        //判断从substr[1->modePtr-1]的元素与i之前modePtr-1个元素是否相同；若相同，则modePtr就是next[i]的值；若不相同modePtr--，重复上述过程。
+        //判断从substr[1->modePtr-1]的元素与i之前modePtr-1个元素是否相同；若相同，则modePtr就是next[i]的值；若不相同，modePtr--，重复上述过程。
         //例如：
         //  modePtr=4 substr[1->3]="aba" i之前的3个元素"bab"
         //  modePtr=3 substr[1->2]="ab" i之前的2个元素"ab"

@@ -182,7 +182,7 @@ bool existArc(ALDirGraph &g, bool *visited, int root, int target) {
     return false;
 }
 
-bool arcIsExist(ALDirGraph &g, int i, int j) {
+bool existArcDFS(ALDirGraph &g, int i, int j) {
     //基于深度优先遍历实现，是否存在vi到vj的路径
     //从vi出发进行深度有先遍历
     bool visited[g.vexNum];
@@ -190,6 +190,39 @@ bool arcIsExist(ALDirGraph &g, int i, int j) {
         visited[i] = false;
     }
     return existArc(g, visited, i, j);
+}
+
+bool existArcBFS(ALDirGraph &g, int i, int j) {
+    queue<int> queue;
+    bool visited[g.vexNum];
+    for (int idx = 0; idx < g.vexNum; idx++) {
+        visited[idx] = false;
+    }
+    queue.push(i);
+    visited[i] = true;
+    while (queue.size() > 0) {
+        int head = queue.front();
+        queue.pop();
+        if (head == j) {
+            return true;
+        }
+        ArcNode *p = g.vexList[head].firstArc;
+        while (p != NULL) {
+            int neighbor = p->i;
+            if (!visited[neighbor]) {
+                visited[neighbor] = true;
+                if (neighbor == j) return true;
+                queue.push(neighbor);
+            }
+            p = p->next;
+        }
+    }
+    return false;
+}
+
+bool arcIsExist(ALDirGraph &g, int i, int j, short opType) {
+    if (opType == 0) return existArcDFS(g, i, j);
+    else if (opType == 1) return existArcBFS(g, i, j);
 }
 
 

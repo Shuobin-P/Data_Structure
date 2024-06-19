@@ -41,6 +41,13 @@ ALDirGraph getALDirGraph();
 
 int addVex(ALDirGraph &g, VEX_TYPE vex);
 
+/**
+ * 添加一条顶点x指向顶点y的边
+ * @param g
+ * @param x
+ * @param y
+ * @return
+ */
 bool addArc(ALDirGraph &g, VEX_TYPE x, VEX_TYPE y);
 
 /**
@@ -70,10 +77,11 @@ bool addArcNodeToVex(ALDirGraph &g, int vexIdx, int arcIdx);
 /**
  * 基于深度优先遍历，判断vi顶点和vj顶点之间是否存在路径
  * @param g
- * @param i vi
- * @param j vj
+ * @param i 顶点vi对应的下标
+ * @param j 顶点vj对应的下标
+ * @param opType 0代表基于DFS，1代表基于BFS
  * @return
  */
-bool arcIsExist(ALDirGraph &g, int i, int j);
+bool arcIsExist(ALDirGraph &g, int i, int j, short opType);
 
 #endif //DATA_STRUCTURE_AL_DIR_GRAPH_H
