@@ -98,15 +98,16 @@ void dfsByRecursion(AMIndGraph &g) {
 void dfsByStackImpl(AMIndGraph &g, int i, bool *visited) {
     std::stack<int> stack;
     stack.push(i);
-    visited[i] = true; //易错
     while (stack.size() > 0) {
         int ele = stack.top();
         stack.pop();
-        printf("%c", g.vexes[ele]);
-        for (int j = g.vexNum - 1; j >= 0; j--) {
-            if (g.matrix[ele][j] == 1 && !visited[j]) {
-                stack.push(j);
-                visited[j] = true; //易错
+        if (!visited[ele]) {
+            visited[ele] = true; //易错
+            printf("%c", g.vexes[ele]);
+            for (int j = g.vexNum - 1; j >= 0; j--) {
+                if (g.matrix[ele][j] == 1 && !visited[j]) {
+                    stack.push(j);
+                }
             }
         }
     }

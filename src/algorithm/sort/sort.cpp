@@ -98,6 +98,7 @@ void quickSort(int *arr, int low, int high) {
     quickSort(arr, low + 1, right);
 }
 
+
 void quickSort(int *arr, int arrLen) {
     quickSort(arr, 0, arrLen - 1);
 }
