@@ -8,12 +8,12 @@
 #ifndef DATA_STRUCTURE_STACK_H
 #define DATA_STRUCTURE_STACK_H
 
-typedef struct Node {
+typedef struct ArcNode {
     int val;
-    struct Node *next;
+    struct ArcNode *nextArc;
     int maxCapacity;
     int nodeSize;
-} Node, *Stack;
+} ArcNode, *Stack;
 
 void init(Stack &stack);
 

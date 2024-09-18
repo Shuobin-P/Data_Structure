@@ -9,7 +9,7 @@
 
 /**
  * 根据substr创建对应的next数组
- * @param next kmp中的next数组，next[0]不存储有效数据
+ * @param next kmp中的next数组，nextArc[0]不存储有效数据
  * @param nextLen next数组长度
  * @param substr 模式串 substr[0]不存储有效数据
  */
@@ -50,7 +50,7 @@ void createNextArr(int *next, int nextLen, char *substr) {
 int kmp(char *str, int strLen, char *substr, int subStrLen) {
     //步骤一：根据substr创建next数组
     //步骤二：根据next数组去str中寻找substr的位置
-    int next[subStrLen + 1]; //next[0]不存储有效数据，即从下标1开始。
+    int next[subStrLen + 1]; //nextArc[0]不存储有效数据，即从下标1开始。
     createNextArr(next, subStrLen + 1, substr - 1);
     int i = 1, j = 1;
     while (i <= strLen && j <= subStrLen) {

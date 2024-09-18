@@ -17,11 +17,19 @@ typedef struct {
     int length; //已有元素的数量
 } List;
 
-void init_list(List* list);
+void init_list(List *&list);
+
 void addElementAtEnd(List *list, int e);
+
 void addElementAtIndex(List *list, int index, int e);
+
 int deleteElementByIndex(List *list, int index);
+
 void printList(List *list);
+
+void destroyList(List *&list);
+
+bool isEmpty(List *list);
 
 #endif //PROJECT1_LIST_H
 

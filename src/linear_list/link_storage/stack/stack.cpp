@@ -10,27 +10,27 @@
 #include "stack.h"
 
 void init(Stack &stack) {
-    stack = (Node *) malloc(sizeof(Node));
+    stack = (ArcNode *) malloc(sizeof(ArcNode));
     stack->val = -1;
-    stack->next = NULL;
+    stack->nextArc = NULL;
     stack->maxCapacity = 10;
     stack->nodeSize = 0;
 }
 
 bool push(Stack &stack, int val) {
     if(isFull(stack)) return false;
-    Node *newNode = (Node *) malloc(sizeof(Node));
+    ArcNode *newNode = (ArcNode *) malloc(sizeof(ArcNode));
     newNode->val = val;
-    newNode->next = stack->next;
-    stack->next = newNode->next;
+    newNode->nextArc = stack->nextArc;
+    stack->nextArc = newNode->nextArc;
     stack->nodeSize++;
     return true;
 }
 
 bool pop(Stack &stack, int &holder) {
     if(isEmpty(stack)) return false;
-    Node *tmp = stack->next;
-    stack->next = stack->next->next;
+    ArcNode *tmp = stack->nextArc;
+    stack->nextArc = stack->nextArc->nextArc;
     holder = tmp->val;
     free(tmp);
     stack->nodeSize--;
@@ -39,14 +39,14 @@ bool pop(Stack &stack, int &holder) {
 
 bool getStackTop(Stack &stack, int &holder) {
     if(!isEmpty(stack)) {
-        holder = stack->next->val;
+        holder = stack->nextArc->val;
         return true;
     }
     return false;
 }
 
 bool isEmpty(Stack &stack) {
-    return stack->next == NULL;
+    return stack->nextArc == NULL;
 }
 
 bool isFull(Stack &stack) {

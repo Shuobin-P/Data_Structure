@@ -8,23 +8,25 @@
 
 #ifndef PROJECT1_SINGLE_LINKED_LIST_H
 #define PROJECT1_SINGLE_LINKED_LIST_H
-typedef struct LNode{
+typedef struct LNode {
     int val;
     struct LNode *next;
-}LNode, *LinkList;
+} LNode, *LinkList;
 
 /**
- * 创建含有头(dummy)节点的初始空链表
- * @param list 未初始化的空链表
- */
-LinkList init();
-
-/**
- * 使用C++的引用&实现单链表的初始化
+ * 采用无dummy结点的方式创建链表
  * @param linkList
- * @return 初始化是否成功
+ * @return true: 初始化成功， false: 初始化失败
  */
-bool initList(LinkList &linkList);
+bool initListNoDummy(LinkList &linkList);
+
+/**
+ * 将dummy结点作为单链表的头结点
+ * @param linkList
+ * @return true: 初始化成功， false: 初始化失败
+ */
+bool initListDummyHead(LinkList &linkList);
+
 /**
  * 在指定节点后插入新的节点
  * @param p
@@ -58,7 +60,16 @@ bool insertAtIndex(LinkList &list, int index, int val);
  * @param deletedEleHolder 保存被删除的元素的值
  * @return
  */
-bool deleteAtIndex(LinkList &list, int index, int &deletedEleValHolder);
+__attribute__((deprecated)) bool deleteAtIndex(LinkList &list, int index, int &deletedEleValHolder);
+
+/**
+ * 删除指定位置处的结点
+ * @param list
+ * @param index index>0
+ * @param holder 保存被删除的元素的值
+ * @return true: 删除成功 false: 删除失败
+ */
+bool listDelete(LinkList &list, int index, int &holder);
 
 /**
  * 删除给定地址的节点
@@ -100,10 +111,31 @@ void createListByInsertTail(LinkList &list);
  * @param list
  */
 void createListByInsertTailWithoutDummyHead(LinkList &list);
+
 /**
  * 遍历输出含dummy头节点的单链表
  * @param list
  */
 void traverseList(LinkList list);
+
+/**
+ * 获得list的长度
+ * @param list
+ */
+int length(LinkList &list);
+
+/**
+ * 判断链表是否为空
+ * @param list
+ * @return true: 链表为空 false: 链表不为空
+ */
+bool isEmpty(LinkList &list);
+
+/**
+ * 回收链表占用的内存空间。C语言没有垃圾回收机制，因此需要手动处理，或者使用第三方库。
+ * @param list
+ */
+void destroyList(LinkList &list);
+
 #endif //PROJECT1_SINGLE_LINKED_LIST_H
 

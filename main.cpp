@@ -1,22 +1,19 @@
-#include <iostream>
-#include <vector>
-#include <stack>
-#include "src/nonlinear_list/seq_storage/graph/indirected_graph/am_indir_graph.h"
+#include<stdio.h>
+#include "src/linear_list/link_storage/single_link_list/single_link_list.h"
 
 using namespace std;
 
-
 int main() {
-    AMIndGraph g = getGraph();
-    addVex(g, '0');
-    addVex(g, '1');
-    addVex(g, '2');
-    addVex(g, '3');
-    addVex(g, '4');
-    addArc(g, '0', '1');
-    addArc(g, '0', '2');
-    addArc(g, '0', '4');
-    addArc(g, '1', '3');
-    addArc(g, '2', '4');
-    dfs(g, 2);
+    //练习实现线性表的基本操作：
+    LinkList list;
+    initListDummyHead(list);
+    insertAtIndex(list, 1, 1);
+    insertAtIndex(list, 2, 2);
+    insertAtIndex(list, 3, 3);
+    insertAtIndex(list, 4, 4);
+    traverseList(list);
+    int holder = 0;
+    listDelete(list, 5, holder);
+    traverseList(list);
+    return 0;
 }

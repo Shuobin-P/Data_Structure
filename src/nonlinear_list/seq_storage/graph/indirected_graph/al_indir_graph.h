@@ -14,7 +14,7 @@
  */
 typedef struct ArcNode {
     int i;  //边所指向的节点在vexList中的下标
-    struct ArcNode *next;
+    struct ArcNode *nextArc;
 } ArcNode;
 
 /**

@@ -6,7 +6,7 @@
 ********************************************************************************/
 #ifndef DATA_STRUCTURE_AL_DIR_GRAPH_H
 #define DATA_STRUCTURE_AL_DIR_GRAPH_H
-#define VEX_TYPE char       //图中结点的数据类型
+#define VEX_TYPE int       //图中结点的数据类型
 #define INIT_VEX_SIZE 15    //图中可容纳的初始最大结点容量
 
 /**
@@ -14,7 +14,7 @@
  */
 typedef struct ArcNode {
     int i;  //边所指向的节点在vexList中的下标
-    struct ArcNode *next;
+    struct ArcNode *nextArc;
 } ArcNode;
 
 /**

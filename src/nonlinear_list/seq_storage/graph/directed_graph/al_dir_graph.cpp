@@ -47,16 +47,16 @@ bool addArcNodeToVex(ALDirGraph &g, int vexIdx, int arcIdx) {
     ArcNode *ptr = g.vexList[vexIdx].firstArc;
     ArcNode *t = (ArcNode *) malloc(sizeof(ArcNode));
     t->i = arcIdx;
-    t->next = NULL;
+    t->nextArc = NULL;
     if (ptr == NULL) {
         g.vexList[vexIdx].firstArc = t;
         g.arcNum++;
         return true;
     } else {
-        while (ptr->next != NULL) {
-            ptr = ptr->next;
+        while (ptr->nextArc != NULL) {
+            ptr = ptr->nextArc;
         }
-        ptr->next = t;
+        ptr->nextArc = t;
         g.arcNum++;
         return true;
     }
@@ -82,7 +82,7 @@ void bfs(ALDirGraph &g) {
                         queue.push(ptr->i);
                         visited[ptr->i] = true;
                     }
-                    ptr = ptr->next;
+                    ptr = ptr->nextArc;
                 }
             }
         }
@@ -98,7 +98,7 @@ void dfsImplByIncur(ALDirGraph &g, int idx, bool *visited) {
         if (!visited[ptr->i]) {
             dfsImplByIncur(g, ptr->i, visited);
         }
-        ptr = ptr->next;
+        ptr = ptr->nextArc;
     }
 }
 
@@ -116,7 +116,7 @@ void dfsByStack(ALDirGraph &g, int idx, bool *visited) {
                 t.push(ptr->i);
                 visited[ptr->i] = true;
             }
-            ptr = ptr->next;
+            ptr = ptr->nextArc;
         }
         while (t.size() > 0) {
             stack.push(t.top());
@@ -158,14 +158,14 @@ int isExist(ALDirGraph &g, VEX_TYPE e) {
 bool existArc(ALDirGraph &g, bool *visited, int root, int target) {
     //结束条件：
     //if(root == target) return true;
-    //ptr = g.vexList[root].next
+    //ptr = g.vexList[root].nextArc
     /*
      * while(!(isExist or ptr == NULL )) {
      *  tmp = existArc(g, visited, ptr->i, target, isExist)
      *  if(tmp) {
      *      return true
      *  }
-     *  ptr = ptr -> next
+     *  ptr = ptr -> nextArc
      * }
      * return false
     */
@@ -177,7 +177,7 @@ bool existArc(ALDirGraph &g, bool *visited, int root, int target) {
             bool tmp = existArc(g, visited, ptr->i, target);
             if (tmp) return true;
         }
-        ptr = ptr->next;
+        ptr = ptr->nextArc;
     }
     return false;
 }
@@ -214,7 +214,7 @@ bool existArcBFS(ALDirGraph &g, int i, int j) {
                 if (neighbor == j) return true;
                 queue.push(neighbor);
             }
-            p = p->next;
+            p = p->nextArc;
         }
     }
     return false;

@@ -46,16 +46,16 @@ bool addArcNodeToVex(ALGraph &g, int vexIdx, int arcIdx) {
     ArcNode *ptr = g.vexList[vexIdx].firstArc;
     ArcNode *t = (ArcNode *) malloc(sizeof(ArcNode));
     t->i = arcIdx;
-    t->next = NULL;
+    t->nextArc = NULL;
     if (ptr == NULL) {
         g.vexList[vexIdx].firstArc = t;
         g.arcNum++;
         return true;
     } else {
-        while (ptr->next != NULL) {
-            ptr = ptr->next;
+        while (ptr->nextArc != NULL) {
+            ptr = ptr->nextArc;
         }
-        ptr->next = t;
+        ptr->nextArc = t;
         g.arcNum++;
         return true;
     }
@@ -69,7 +69,7 @@ void dfsImpl(ALGraph &g, int vexIdx, bool *visited) {
         if (!visited[ptr->i]) {
             dfsImpl(g, ptr->i, visited);
         }
-        ptr = ptr->next;
+        ptr = ptr->nextArc;
     }
 
 }
@@ -109,9 +109,9 @@ void dfsByStack(ALGraph &g) {
                     if (!visited[ptr->i]) {
                         t.push(ptr->i);
                         visited[ptr->i] = true;
-                        ptr = ptr->next;
+                        ptr = ptr->nextArc;
                     } else {
-                        ptr = ptr->next;
+                        ptr = ptr->nextArc;
                     }
                 }
                 while (t.size() > 0) {
@@ -151,7 +151,7 @@ void bfs(ALGraph &g) {
                         queue.push(ptr->i);
                         visited[ptr->i] = true;
                     }
-                    ptr = ptr->next;
+                    ptr = ptr->nextArc;
                 }
             }
         }
@@ -180,7 +180,7 @@ void bfsMinDistance(ALGraph &g, int idx) {
                 visited[ptr->i] = true;
                 distance[ptr->i] = distance[head] + 1;
             }
-            ptr = ptr->next;
+            ptr = ptr->nextArc;
         }
     }
     for (int i = 0; i <= g.vexNum - 1; i++) {

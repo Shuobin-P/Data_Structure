@@ -5,16 +5,17 @@
 * @description: 
 ********************************************************************************/
 #include <stdio.h>
-#include <stdbool.h>
 #include <malloc.h>
 #include "seq_list.h"
 
 /**
  * 采取线性存储且能够动态分配空间的线性表
  */
-
-void init_list(List* list) {
-    *list = (List){(int *) malloc(sizeof(int) * INITIAL_SIZE), 0};
+void init_list(List *&list) {
+    //*list = (List) {(int *) malloc(sizeof(int) * INITIAL_SIZE), 0};
+    list = (List *) malloc(sizeof(List));
+    list->dataArr = (int *) malloc(sizeof(int) * INITIAL_SIZE);
+    list->length = 0;
 }
 
 /**
@@ -23,7 +24,7 @@ void init_list(List* list) {
  * @param size 增量
  * @return 新的数组起始地址
  */
-int* resize(int *originArr, int size) {
+int *resize(int *originArr, int size) {
     return NULL;
 }
 
@@ -45,7 +46,6 @@ void addElementAtEnd(List *list, int e) {
     }
     list->dataArr[list->length] = e;
     list->length++;
-    //printf("Here is addElementAtEnd func, length = %d\n", vexList->length);
 }
 
 /**
@@ -73,10 +73,10 @@ void addElementAtIndex(List *list, int index, int e) {
 }
 
 void printList(List *list) {
-    int *p = list->dataArr;
-    printf("List的元素：");
+    if (list == NULL) return;
+    printf("List's dataArr: ");
     for (int i = 0; i <= list->length - 1; i++) {
-        printf("%d ", p[i]);
+        printf("%d ", list->dataArr[i]);
     }
     printf("\n");
 }
@@ -88,13 +88,24 @@ void printList(List *list) {
 int deleteElementByIndex(List *list, int index) {
     int elementVal = list->dataArr[index];
     int p = index;
-    while(p < list->length - 1) {
-        list->dataArr[p] = list->dataArr[p+1];
+    while (p < list->length - 1) {
+        list->dataArr[p] = list->dataArr[p + 1];
         p++;
     }
     list->length--;
     return elementVal;
 }
+
+void destroyList(List *&list) {
+    free(list);
+    list = NULL;
+}
+
+bool isEmpty(List *list) {
+    if (list == NULL || list->length == 0) return true;
+    return false;
+}
+
 /**
  * 按值删除
  * @param target 要删除的目标值
